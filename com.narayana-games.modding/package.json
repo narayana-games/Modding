@@ -1,0 +1,16 @@
+{
+    "name": "com.narayana-games.modding",
+    "displayName": "narayana games Modding",
+    "version": "0.1.0",
+    "unity": "2019.1",
+    "description": "Some modding utilities we use at narayana games to support modding for Holodance and Beat the Rhythm.",
+    "keywords": [
+        "rhythm",
+        "vr",
+        "audio",
+        "music",
+        "btr",
+        "holodance"
+    ],
+    "category": "Data"
+}
