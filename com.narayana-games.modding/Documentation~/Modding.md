@@ -7,6 +7,6 @@ Trippy Tunnels and Zero Distraction.
 
 To get started,check out:
 
-```<pathToSteam>\Steam\steamapps\common\Holodance\Holodance_Data\StreamingAssets\Arenas\TrippyTunnels\ModGroup.json```
+```<pathToSteam>\Steam\steamapps\common\Holodance\Holodance_Data\StreamingAssets\ArenaMods\TrippyTunnels\ModGroup.json```
 
 ## More to come ...
