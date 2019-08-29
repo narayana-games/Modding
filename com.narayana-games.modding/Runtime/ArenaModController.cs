@@ -17,35 +17,16 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         [FormerlySerializedAs("moddableNoteSources")]
         public List<ModdableGameObject> moddableGameObjects = new List<ModdableGameObject>();
         
-        public enum PathBase {
-            Absolute,
-            StreamingAssets,
-            PersistentDataPath
-        }
-
         [Header("File Location of Mod Configuration")]
-        public PathBase pathBase = PathBase.StreamingAssets;
+        public ModFileIO.PathBase pathBase = ModFileIO.PathBase.StreamingAssets;
 
         [SerializeField]
         private string defaultPathForMods = "";
 
         public string DefaultPathForMods {
-            get { return GetFullPath(defaultPathForMods); }
+            get { return ModFileIO.GetFullPath(pathBase, defaultPathForMods); }
         }
         
-        private string GetFullPath(string path) {
-            switch (pathBase) {
-                case PathBase.Absolute: 
-                    return path;
-                case PathBase.StreamingAssets:
-                    return $"{Application.streamingAssetsPath}/{path}";
-                case PathBase.PersistentDataPath:
-                    return $"{Application.persistentDataPath}/{path}";
-            }
-
-            return path;
-        }
-
         [FormerlySerializedAs("activeMod")]
         [Header("Loaded From File System")]
         public ModGroup modGroup = new ModGroup();
@@ -117,7 +98,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         private void OnModGroupLoaded(ModGroup newModGroup) {
             try {
                 Debug.Log("<b>[Modding]</b> ==================== Mod Group (Re-)loaded ====================");
-                Debug.Log($"LoadActiveModConfig: Loaded '{modGroupLoader.FullFilePath}', " 
+                Debug.Log($"<b>[Modding]</b> LoadActiveModConfig: Loaded '{modGroupLoader.FullFilePath}', " 
                           + $"new mod: {newModGroup.pathToCurrentMod}, " 
                           + $"last mod: {modGroup.pathToCurrentMod}");
 
@@ -228,6 +209,15 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             ModFileIO.SaveConfig(modGroup.FullBasePath, mod, "Mod");
             ModFileIO.SaveConfig(modGroup.FullBasePath, arenaMod, "ArenaMod");
         }
-        
+
+        public List<Mod> LoadMods() {
+            return ModFileIO.LoadMods(pathBase, modGroup);
+        }
+
+        public void ActivateMod(string pathToMod) {
+            modGroup.pathToCurrentMod = pathToMod;
+            initialLoad = true;
+            SaveActiveModConfig();
+        }
     }
 }

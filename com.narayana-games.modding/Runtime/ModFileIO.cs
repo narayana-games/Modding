@@ -5,6 +5,26 @@ using UnityEngine;
 
 namespace NarayanaGames.BeatTheRhythm.Modding {
     public static class ModFileIO {
+        
+        public enum PathBase {
+            Absolute,
+            StreamingAssets,
+            PersistentDataPath
+        }
+
+        public static string GetFullPath(PathBase pathBase, string path) {
+            switch (pathBase) {
+                case PathBase.Absolute: 
+                    return path;
+                case PathBase.StreamingAssets:
+                    return $"{Application.streamingAssetsPath}/{path}";
+                case PathBase.PersistentDataPath:
+                    return $"{Application.persistentDataPath}/{path}";
+            }
+
+            return path;
+        }
+        
         public static void SaveConfig(string basePath, object obj, string fileName, bool fileHasFullPath = false) {
             string path = fileName;
             if (!fileHasFullPath) {
@@ -29,6 +49,27 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             Debug.Log($"<b>[Modding-FileIO]</b> Saved to {file.FullName}");
         }
 
+        public static List<Mod> LoadMods(PathBase pathBase, ModGroup modGroup) {
+            List<Mod> mods = new List<Mod>();
+            foreach (string path in modGroup.pathsForMods) {
+                string fullPath = path;
+                if (!Path.IsPathRooted(path)) {
+                    fullPath = GetFullPath(pathBase, fullPath);
+                }
+                DirectoryInfo dirInfo = new DirectoryInfo(fullPath);
+                FileInfo[] modFiles = dirInfo.GetFiles("Mod.json", SearchOption.AllDirectories);
+                foreach (FileInfo modFile in modFiles) {
+                    Mod mod = LoadFile<Mod>(modFile.FullName);
+                    if (mod.groupKey.Equals(modGroup.groupKey)) {
+                        mod.PathToMod = modFile.Directory.FullName;
+                        mods.Add(mod);
+                    }
+                }
+            }
+
+            return mods;
+        }
+        
         public static T LoadConfig<T>(string basePath, string fileName, out string path) where T : new() {
             path = Path.Combine(basePath, $"{fileName}.json");
             return LoadFile<T>(path);
@@ -98,5 +139,6 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
 
             return texture;
         }
+
     }
 }

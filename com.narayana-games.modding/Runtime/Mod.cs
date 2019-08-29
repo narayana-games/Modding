@@ -33,7 +33,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         /// <summary>
         ///     Path to a small preview image that has 128x128. Could be png or jpg.
         /// </summary>
-        public string modImage128x128 = "";
+        public string modImage128x96 = "";
 
         /// <summary>
         ///     This should always be true - unless you are working on the mod and
@@ -56,6 +56,10 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         /// </summary>
         public string basedOnModVersion = "";
 
+        /// <summary>
+        ///     Set by the loader when iterating over all mods of a specific group.
+        /// </summary>
+        public string PathToMod { get; set; }
 
         public void GetFrom(ModGroup group) {
             modName = group.pathToCurrentMod;
