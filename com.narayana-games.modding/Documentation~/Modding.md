@@ -8,7 +8,7 @@ and
 ## Getting Started
 
 Currently, Holodance only has support for modding in the Arenas
-Trippy Tunnels and Zero Distraction.
+Trippy Tunnels.
 
 To get started, check out:
 
