@@ -1,5 +1,10 @@
 # Modding Holodance / Beat the Rhythm
 
+This guide applies to the VR rhythm games 
+[Holodance](https://store.steampowered.com/app/422860/Holodance/) 
+and 
+[Beat the Rhythm](https://store.steampowered.com/app/781200/Beat_the_Rhythm_VR/)
+
 ## Getting Started
 
 Currently, Holodance only has support for modding in the Arenas
@@ -174,3 +179,6 @@ can also help.
 We use mod.io so you can share your mods with other players, regardless of platform:
 
 [Holodance on mod.io](https://holodance.mod.io/)
+
+Eventually, we'll put an uploader right into the game but that will probably after 
+we have completed the beatmap editor.
