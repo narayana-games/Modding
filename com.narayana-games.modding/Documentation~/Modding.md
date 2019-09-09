@@ -12,6 +12,10 @@ To get started, check out:
 Any mods you put into that folder will immediately show up in the game 
 (once you have entered the Arena that they were designed for).
 
+Mods that you have downloaded from [mod.io](https://holodance.mod.io/) (inside the game), will show up in:
+
+```C:\Users\<YourName>\AppData\LocalLow\narayana games\Holodance\modio-187\_installedMods\<someID>```
+
 ## Creating your first mod
 
 Get the [Texture Kit](https://holodance.mod.io/texture-kit) mod from mod.io. This changes everything,
