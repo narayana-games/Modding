@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
 
 namespace NarayanaGames.BeatTheRhythm.Modding {
@@ -50,12 +51,18 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         }
 
         public List<Mod> LoadMods(PathBase pathBase, ModGroup modGroup) {
+            StringBuilder sb = new StringBuilder();
             List<Mod> mods = new List<Mod>();
+
             foreach (string path in modGroup.PathsForMods) {
                 string fullPath = path;
                 if (!Path.IsPathRooted(path)) {
                     fullPath = GetFullPath(pathBase, fullPath);
+                    sb.AppendLine($"Trying path '{path}' (=> '{fullPath}')");
+                } else {
+                    sb.AppendLine($"Trying path '{path}' (rooted)");
                 }
+
                 DirectoryInfo dirInfo = new DirectoryInfo(fullPath);
                 FileInfo[] modFiles = dirInfo.GetFiles("Mod.json", SearchOption.AllDirectories);
                 foreach (FileInfo modFile in modFiles) {
@@ -63,9 +70,14 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                     if (mod.groupKey.Equals(modGroup.groupKey)) {
                         mod.PathToMod = modFile.Directory.FullName;
                         mods.Add(mod);
+                        sb.AppendLine($"Added mod '{mod.modName}' at '{modFile.FullName}'");
+                    } else {
+                        sb.AppendLine(
+                            $"Skipping mod '{mod.modName}', has '{mod.groupKey}', needs: '{modGroup.groupKey}'");
                     }
                 }
             }
+            Log($"Searched for mods. Results:{System.Environment.NewLine}{sb}");
 
             return mods;
         }
