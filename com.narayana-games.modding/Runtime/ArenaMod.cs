@@ -44,16 +44,16 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             
             moddableGameObjects.Clear();
             foreach (ModdableGameObject go in gos) {
-                ArenaModGameObject noteSourceMod = new ArenaModGameObject();
-                noteSourceMod.GetFrom(go);
-                moddableGameObjects.Add(noteSourceMod);
+                ArenaModGameObject goMod = new ArenaModGameObject();
+                moddableGameObjects.Add(goMod);
+                goMod.GetFrom(go);
             }
             
             moddableLights.Clear();
             foreach (Light light in lights) {
                 ArenaModLight lightMod = new ArenaModLight();
-                lightMod.GetFrom(light);
                 moddableLights.Add(lightMod);
+                lightMod.GetFrom(light);
             }
         }
     }
@@ -121,9 +121,9 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             }
 
             moddableChildren.Clear();
-            foreach (ModdableGameObject noteSource in go.moddableChildren) {
+            foreach (ModdableGameObject child in go.moddableChildren) {
                 ArenaModGameObject goMod = new ArenaModGameObject();
-                goMod.GetFrom(noteSource);
+                goMod.GetFrom(child);
                 moddableChildren.Add(goMod);
             }
         }
