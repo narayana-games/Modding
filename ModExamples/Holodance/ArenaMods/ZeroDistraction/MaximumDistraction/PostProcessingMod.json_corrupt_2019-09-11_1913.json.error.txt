@@ -1,5 +1,0 @@
-Reading from Json-file 'C:\GameDev\GitHub\Modding\ModExamples\Holodance\ArenaMods\ZeroDistraction\MaximumDistraction\PostProcessingMod.json' failed with exception: System.ArgumentException: JSON parse error: Missing a comma or '}' after an object member.
-  at (wrapper managed-to-native) UnityEngine.JsonUtility.FromJsonInternal(string,object,System.Type)
-  at UnityEngine.JsonUtility.FromJson (System.String json, System.Type type) [0x00062] in C:\buildslave\unity\build\Modules\JSONSerialize\Public\JsonUtility.bindings.cs:42 
-  at UnityEngine.JsonUtility.FromJson[T] (System.String json) [0x0000c] in C:\buildslave\unity\build\Modules\JSONSerialize\Public\JsonUtility.bindings.cs:30 
-  at NarayanaGames.BeatTheRhythm.Modding.ModFileIO.LoadFile[T] (System.String path) [0x00037] in C:\GameDev\GitHub\Modding\com.narayana-games.modding\Runtime\ModFileIO.cs:103 
