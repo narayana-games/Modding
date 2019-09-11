@@ -33,7 +33,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         /// <summary>
         ///     Path to a small preview image that has 128x128. Could be png or jpg.
         /// </summary>
-        public string modImage128x96 = "";
+        public string modImage128x96 = "preview128x96.png";
 
         /// <summary>
         ///     This should always be true - unless you are working on the mod and
