@@ -7,5 +7,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         [Tooltip("Renderers that could be modded")]
         public List<Renderer> moddableRenderers = new List<Renderer>();
     
+        [Tooltip("Children Game Objects that could be modded")]
+        public List<ModdableGameObject> moddableChildren = new List<ModdableGameObject>();
     }
 }
