@@ -50,6 +50,9 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             get {
                 return instance;
             }
+            set {
+                instance = value;
+            }
         }
 
         public void Awake() {
@@ -105,9 +108,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                 string oldMod = modGroup.pathToCurrentMod;
                 modGroup = newModGroup;
 
-                if (modGroup.SetBasePath(Path.IsPathRooted(modGroup.pathToCurrentMod)
-                    ? ""
-                    : DefaultPathForMods)) {
+                if (CheckBasePath()) {
                     
                     if (modGroup.isGroupActive) {
                         if (initialLoad || modGroup.pathToCurrentMod != oldMod) {
@@ -202,22 +203,28 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         
         [ContextMenu("Save Config to File")]
         public void SaveConfig() {
-            modGroup.SetBasePath(Path.IsPathRooted(modGroup.pathToCurrentMod)
-                ? ""
-                : DefaultPathForMods);
+            CheckBasePath();
             
             ModFileIO.SaveConfig(modGroup.FullBasePath, mod, "Mod");
             ModFileIO.SaveConfig(modGroup.FullBasePath, arenaMod, "ArenaMod");
         }
 
+        private ModFileIO modFileIO = new ModFileIO();
+        
         public List<Mod> LoadMods() {
-            return ModFileIO.LoadMods(pathBase, modGroup);
+            return modFileIO.LoadMods(pathBase, modGroup);
         }
 
         public void ActivateMod(string pathToMod) {
             modGroup.pathToCurrentMod = pathToMod;
             initialLoad = true;
             SaveActiveModConfig();
+        }
+
+        public bool CheckBasePath() {
+            return modGroup.SetBasePath(Path.IsPathRooted(modGroup.pathToCurrentMod)
+                ? ""
+                : DefaultPathForMods);
         }
     }
 }
