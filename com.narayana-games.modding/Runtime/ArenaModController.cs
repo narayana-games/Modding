@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -57,21 +58,38 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
 
         public void Awake() {
             if (moddableSkybox == null) {
-                moddableSkybox = new Material(Shader.Find("Skybox/Panoramic"));
+                Shader skyboxPanoramic = Shader.Find("Skybox/Panoramic");
+                if (skyboxPanoramic != null) {
+                    moddableSkybox = new Material(skyboxPanoramic);
+                } else {
+                    LogError("Could not find Shader Skybox/Panoramic, skybox modding won't work!'");
+                }
             }
-            
-            arenaOrig.GetFrom(
-                moddableGameObjects,
-                moddableLights);
-            
         }
 
         public void OnEnable() {
             instance = this;
 
-            InitializeActiveModLoading();
+            StartCoroutine(InitializeWhenSceneIsActive());
         }
 
+        private IEnumerator InitializeWhenSceneIsActive() {
+
+            // wait until this scene has become active ...
+            while (myScene != SceneManager.GetActiveScene()) {
+                yield return null;
+            }
+            
+            // ... so that we grab the right skybox material 
+            if (arenaOrig.skybox.SkyboxMaterial == null) {
+                arenaOrig.GetFrom(
+                    moddableGameObjects,
+                    moddableLights);
+            }
+            
+            InitializeActiveModLoading();
+        }
+        
         public void OnDisable() {
             instance = null;
             
