@@ -1,0 +1,891 @@
+{
+    "skybox": {
+        "skyboxTexture": "Skyboxes/Level-01_Evening.jpg",
+        "skyboxTintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+        },
+        "skyboxExposure": 1.0,
+        "skyboxRotation": 150.0,
+        "skyboxMapping": 1.0,
+        "skyboxImageType": 0.0,
+        "skyboxMirrorOnBack": 0.0,
+        "skybox3DLayout": 0.0
+    },
+    "moddableGameObjects": [
+        {
+            "name": "FlyingNotesSourceRotation (13) - HugeScreen",
+            "modThis": true,
+            "overrideActive": false,
+            "isActive": true,
+            "position": {
+                "x": 0.0,
+                "y": 1.5,
+                "z": 11.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "moddableRenderers": [
+                {
+                    "name": "FlyingNotesSourceActive",
+                    "enabled": false,
+                    "modelOverride": ""
+                },
+                {
+                    "name": "Ellipsoid-Top",
+                    "enabled": true,
+                    "modelOverride": ""
+                },
+                {
+                    "name": "Ellipsoid-Right",
+                    "enabled": true,
+                    "modelOverride": ""
+                },
+                {
+                    "name": "Ellipsoid-Left",
+                    "enabled": true,
+                    "modelOverride": ""
+                },
+                {
+                    "name": "Ellipsoid-Bottom",
+                    "enabled": true,
+                    "modelOverride": ""
+                },
+                {
+                    "name": "FlyingNotesSourceArea-Green",
+                    "enabled": true,
+                    "modelOverride": ""
+                }
+            ],
+            "moddableChildren": []
+        },
+        {
+            "name": "TrackLane - Center",
+            "modThis": true,
+            "overrideActive": true,
+            "isActive": true,
+            "position": {
+                "x": 0.0,
+                "y": -2.0,
+                "z": -20.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "moddableRenderers": [],
+            "moddableChildren": [
+                {
+                    "name": "FloorPrototype04x01x04 (0)",
+                    "modThis": true,
+                    "overrideActive": true,
+                    "isActive": false,
+                    "position": {
+                        "x": 0.0,
+                        "y": -0.05000000074505806,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.000009334667993243784,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (0)",
+                    "modThis": true,
+                    "overrideActive": true,
+                    "isActive": false,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (1)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 44.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (2)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 88.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (3)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 132.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                }
+            ]
+        },
+        {
+            "name": "TrackLane (-1)",
+            "modThis": true,
+            "overrideActive": true,
+            "isActive": true,
+            "position": {
+                "x": -2.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -10.0,
+                "z": -30.0
+            },
+            "moddableRenderers": [],
+            "moddableChildren": [
+                {
+                    "name": "FloorPrototype04x01x04 (0)",
+                    "modThis": true,
+                    "overrideActive": true,
+                    "isActive": false,
+                    "position": {
+                        "x": 0.0,
+                        "y": -0.05000000074505806,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.000009334667993243784,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (1)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 44.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (2)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 88.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (3)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 132.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                }
+            ]
+        },
+        {
+            "name": "TrackLane (+1)",
+            "modThis": true,
+            "overrideActive": true,
+            "isActive": true,
+            "position": {
+                "x": 2.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 10.0,
+                "z": 30.0
+            },
+            "moddableRenderers": [],
+            "moddableChildren": [
+                {
+                    "name": "FloorPrototype04x01x04 (0)",
+                    "modThis": true,
+                    "overrideActive": true,
+                    "isActive": false,
+                    "position": {
+                        "x": 0.0,
+                        "y": -0.05000000074505806,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.000009334667993243784,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (1)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 44.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (2)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 88.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (3)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 132.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                }
+            ]
+        },
+        {
+            "name": "TrackLane (-2)",
+            "modThis": true,
+            "overrideActive": false,
+            "isActive": false,
+            "position": {
+                "x": -8.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "moddableRenderers": [],
+            "moddableChildren": [
+                {
+                    "name": "FloorPrototype04x01x04 (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": -0.05000000074505806,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.000009334667993243784,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (1)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 44.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (2)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 88.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (3)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 132.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                }
+            ]
+        },
+        {
+            "name": "TrackLane (+2)",
+            "modThis": true,
+            "overrideActive": true,
+            "isActive": true,
+            "position": {
+                "x": 4.0,
+                "y": 1.0,
+                "z": 0.663
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 10.0,
+                "z": -100.0
+            },
+            "moddableRenderers": [],
+            "moddableChildren": [
+                {
+                    "name": "FloorPrototype04x01x04 (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": -0.05000000074505806,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.000009334667993243784,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (1)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 44.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (2)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 88.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (3)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 132.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                }
+            ]
+        },
+        {
+            "name": "TrackLane (-3)",
+            "modThis": true,
+            "overrideActive": true,
+            "isActive": true,
+            "position": {
+                "x": -4.0,
+                "y": 1.0,
+                "z": 0.663
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": -10.0,
+                "z": 100.0
+            },
+            "moddableRenderers": [],
+            "moddableChildren": [
+                {
+                    "name": "FloorPrototype04x01x04 (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": -0.05000000074505806,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.000009334667993243784,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (1)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 44.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (2)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 88.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (3)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 132.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                }
+            ]
+        },
+        {
+            "name": "TrackLane (+3)",
+            "modThis": true,
+            "overrideActive": false,
+            "isActive": false,
+            "position": {
+                "x": 12.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "moddableRenderers": [],
+            "moddableChildren": [
+                {
+                    "name": "FloorPrototype04x01x04 (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": -0.05000000074505806,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.000009334667993243784,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (0)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (1)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 44.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (2)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 88.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                },
+                {
+                    "name": "Floor-40m (3)",
+                    "modThis": true,
+                    "overrideActive": false,
+                    "isActive": true,
+                    "position": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 132.0
+                    },
+                    "rotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                    },
+                    "moddableRenderers": [],
+                    "moddableChildren": []
+                }
+            ]
+        }
+    ],
+    "moddableLights": [
+        {
+            "name": "Key Light (Directional)",
+            "modThis": true,
+            "isActive": true,
+            "position": {
+                "x": 0.0,
+                "y": 2.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 47.312034606933597,
+                "y": 17.10395622253418,
+                "z": 12.767572402954102
+            },
+            "type": 1,
+            "range": 10.0,
+            "spotAngle": 30.0,
+            "color": {
+                "r": 0.8659999966621399,
+                "g": 0.8922640085220337,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "intensity": 0.5,
+            "shadows": 2,
+            "dependentOnGameState": false,
+            "intensityWaiting": 0.5,
+            "intensityPlaying": 0.5
+        },
+        {
+            "name": "Back Light (Directional)",
+            "modThis": true,
+            "isActive": true,
+            "position": {
+                "x": 0.0,
+                "y": 2.0,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 31.12055778503418,
+                "y": 192.89683532714845,
+                "z": 10.080533981323243
+            },
+            "type": 1,
+            "range": 10.0,
+            "spotAngle": 30.0,
+            "color": {
+                "r": 0.8659999966621399,
+                "g": 0.8922640085220337,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "intensity": 1.6000000238418579,
+            "shadows": 2,
+            "dependentOnGameState": false,
+            "intensityWaiting": 0.5,
+            "intensityPlaying": 0.5
+        }
+    ]
+}

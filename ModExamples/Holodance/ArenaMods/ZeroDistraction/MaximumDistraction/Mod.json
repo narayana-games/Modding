@@ -1,0 +1,10 @@
+{
+    "groupKey": "Arena-ZeroDistraction",
+    "modName": "Maximum Distraction",
+    "modVersion": "1.0.0",
+    "modAuthor": "jashan",
+    "modImage128x96": "preview128x96.png",
+    "useCache": true,
+    "basedOnMod": "Default",
+    "basedOnModVersion": "1.0.0"
+}
