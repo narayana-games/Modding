@@ -17,9 +17,15 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         
         public bool ModChanged { get; set; }
 
+        public bool LastLoadWasSuccessful {
+            get { return modFileIO.LastLoadWasSuccessful; }
+        }
+        
+        private ModFileIO modFileIO = new ModFileIO();
+        
         public void LoadFile() {
             string fileName = typeof(T).Name;
-            onModLoaded(ModFileIO.LoadConfig<T>(BasePath, fileName, out fullFilePath));
+            onModLoaded(modFileIO.LoadConfig<T>(BasePath, fileName, out fullFilePath));
             Debug.Log($"<b>[Modding-Loader]</b> Loaded '{fileName}' from '{FullFilePath}'");
             ModChanged = true;
 

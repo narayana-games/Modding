@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 
 namespace NarayanaGames.BeatTheRhythm.Modding {
-    public static class ModFileIO {
+    public class ModFileIO {
         
         public enum PathBase {
             Absolute,
@@ -49,9 +49,9 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             Debug.Log($"<b>[Modding-FileIO]</b> Saved to {file.FullName}");
         }
 
-        public static List<Mod> LoadMods(PathBase pathBase, ModGroup modGroup) {
+        public List<Mod> LoadMods(PathBase pathBase, ModGroup modGroup) {
             List<Mod> mods = new List<Mod>();
-            foreach (string path in modGroup.pathsForMods) {
+            foreach (string path in modGroup.PathsForMods) {
                 string fullPath = path;
                 if (!Path.IsPathRooted(path)) {
                     fullPath = GetFullPath(pathBase, fullPath);
@@ -70,14 +70,17 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             return mods;
         }
         
-        public static T LoadConfig<T>(string basePath, string fileName, out string path) where T : new() {
+        public T LoadConfig<T>(string basePath, string fileName, out string path) where T : new() {
             path = Path.Combine(basePath, $"{fileName}.json");
             return LoadFile<T>(path);
         }
 
-        public static T LoadFile<T>(string path) where T : new() {
+        public bool LastLoadWasSuccessful { get; private set; }
+        
+        private T LoadFile<T>(string path) where T : new() {
             T container;
             string json = null;
+            LastLoadWasSuccessful = false;
             // there is a copy of this above
             if (File.Exists(path)) {
                 try {
@@ -86,6 +89,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                     }
 
                     container = JsonUtility.FromJson<T>(json);
+                    LastLoadWasSuccessful = true;
                 } catch (Exception exc) {
                     string backupFileName = $"{path}_corrupt_{DateTime.Now:yyyy-MM-dd_HHmm}.json";
                     container = new T();
