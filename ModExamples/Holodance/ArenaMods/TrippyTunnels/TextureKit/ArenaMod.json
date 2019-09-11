@@ -1,0 +1,108 @@
+{
+    "skybox": {
+        "skyboxTexture": "Skyboxes/PitchBlack.png",
+        "skyboxTintColor": {
+            "r": 0.5,
+            "g": 0.5,
+            "b": 0.5,
+            "a": 1.0
+        },
+        "skyboxExposure": 1.0,
+        "skyboxRotation": 0.0,
+        "skyboxMapping": 1.0,
+        "skyboxImageType": 0.0,
+        "skyboxMirrorOnBack": 0.0,
+        "skybox3DLayout": 0.0
+    },
+    "moddableGameObjects": [
+        {
+            "name": "FlyingNotesSource (1) - (0, 0) - 14m",
+            "modThis": true,
+            "overrideActive": false,
+            "isActive": true,
+            "position": {
+                "x": 0.0,
+                "y": 2.0,
+                "z": 17.0
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 180.0,
+                "z": 0.0
+            },
+            "moddableRenderers": [
+                {
+                    "name": "FlyingNotesSourceRectangle",
+                    "enabled": false,
+                    "modelOverride": ""
+                },
+                {
+                    "name": "FlyingNotesSourceActive",
+                    "enabled": false,
+                    "modelOverride": ""
+                }
+            ],
+            "moddableChildren": []
+        }
+    ],
+    "moddableLights": [
+        {
+            "name": "Key Light (Directional)",
+            "modThis": true,
+            "isActive": true,
+            "position": {
+                "x": -5.599999904632568,
+                "y": 4.199999809265137,
+                "z": 0.0
+            },
+            "rotation": {
+                "x": 27.109310150146486,
+                "y": 20.848894119262697,
+                "z": 35.59937286376953
+            },
+            "type": 1,
+            "range": 10.0,
+            "spotAngle": 30.0,
+            "color": {
+                "r": 0.8680000305175781,
+                "g": 0.8796043992042542,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "intensity": 0.20000000298023225,
+            "shadows": 0,
+            "dependentOnGameState": false,
+            "intensityWaiting": 0.5,
+            "intensityPlaying": 0.5
+        },
+        {
+            "name": "Back Light (Directional)",
+            "modThis": true,
+            "isActive": false,
+            "position": {
+                "x": 4.829999923706055,
+                "y": 4.199999809265137,
+                "z": 15.0
+            },
+            "rotation": {
+                "x": 40.815650939941409,
+                "y": 216.4669647216797,
+                "z": 206.02734375
+            },
+            "type": 1,
+            "range": 10.0,
+            "spotAngle": 30.0,
+            "color": {
+                "r": 1.0,
+                "g": 0.8259999752044678,
+                "b": 0.8562608957290649,
+                "a": 1.0
+            },
+            "intensity": 0.10000000149011612,
+            "shadows": 0,
+            "dependentOnGameState": false,
+            "intensityWaiting": 0.5,
+            "intensityPlaying": 0.5
+        }
+    ]
+}
