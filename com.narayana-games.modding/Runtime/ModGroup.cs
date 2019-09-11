@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace NarayanaGames.BeatTheRhythm.Modding {
@@ -35,8 +36,24 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         /// <summary>
         ///     List of paths where mods for this group can be found.
         /// </summary>
-        public List<string> pathsForMods = new List<string>();
+        [SerializeField]
+        private List<string> pathsForMods = new List<string>();
 
+        private List<string> pathsForMods3rdParty = new List<string>();
+        public void Push3rdPartyPaths(List<string> paths) {
+            pathsForMods3rdParty.Clear();
+            pathsForMods3rdParty.AddRange(paths);
+        }
+        
+        public List<string> PathsForMods {
+            get {
+                List<string> completeList = new List<string>(pathsForMods);
+                completeList.AddRange(pathsForMods3rdParty);
+                return completeList;
+            }
+        }
+        
+        
         private string basePath = string.Empty;
 
         public bool SetBasePath(string newBasePath) {
