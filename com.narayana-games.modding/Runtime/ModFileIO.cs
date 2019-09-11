@@ -33,7 +33,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
 
             FileInfo file = new FileInfo(path);
             if (file.Directory == null) {
-                Debug.LogError($"<b>[Modding-FileIO]</b> Could not save to '{path}'");
+                LogError($"Could not save to '{path}'");
                 return;
             }
 
@@ -46,7 +46,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                 writer.Write(json);
             }
 
-            Debug.Log($"<b>[Modding-FileIO]</b> Saved to {file.FullName}");
+            Log($"Saved to {file.FullName}");
         }
 
         public List<Mod> LoadMods(PathBase pathBase, ModGroup modGroup) {
@@ -116,7 +116,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         public static Texture2D LoadTexture(string basePath, string fileName, bool useCache, bool isSkybox = false) {
             string path = Path.Combine(basePath, fileName);
             if (useCache && textureCache.ContainsKey(path)) {
-                Debug.Log($"<b>[Modding-FileIO]</b> Cache hit for {fileName}");
+                Log($"Cache hit for {fileName}");
                 return textureCache[path];
             }
 
@@ -130,12 +130,12 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                     texture.LoadImage(fileData);
                     if (useCache) {
                         textureCache[path] = texture;
-                        Debug.Log($"<b>[Modding-FileIO]</b> Put {fileName} into cache");
+                        Log($"Put {fileName} into cache");
                     } else {
-                        Debug.Log($"<b>[Modding-FileIO]</b> Loaded {fileName} without caching");
+                        Log($"Loaded {fileName} without caching");
                     }
                 } else {
-                    Debug.LogError($"<b>[Modding-FileIO]</b> There is no file at: '{path}'");
+                    LogError($"There is no file at: '{path}'");
                 }
             } catch (Exception exc) {
                 Debug.LogException(exc);
@@ -144,5 +144,23 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             return texture;
         }
 
+        #region Logging
+        // passing a prefix makes it easy to filter log statements of this subsystem
+        private const string LOGPREFIX = "<b>[Modding-FileIO]</b>";
+    
+        // [HideInStackTrace] or [HideInConsole]
+        private static void Log(string msg) {
+            Debug.Log($"{LOGPREFIX} {msg}");
+        }
+
+        private static void LogWarning(string msg) {
+            Debug.LogWarning($"{LOGPREFIX} {msg}");
+        }
+        
+        private static void LogError(string msg) {
+            Debug.LogError($"{LOGPREFIX} {msg}");
+        }
+        #endregion Logging        
+        
     }
 }

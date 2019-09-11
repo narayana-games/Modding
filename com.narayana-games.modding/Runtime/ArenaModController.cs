@@ -118,8 +118,8 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
 
         private void OnModGroupLoaded(ModGroup newModGroup) {
             try {
-                Debug.Log("<b>[Modding]</b> ==================== Mod Group (Re-)loaded ====================");
-                Debug.Log($"<b>[Modding]</b> LoadActiveModConfig: Loaded '{modGroupLoader.FullFilePath}', " 
+                Log("==================== Mod Group (Re-)loaded ====================");
+                Log($"LoadActiveModConfig: Loaded '{modGroupLoader.FullFilePath}', " 
                           + $"new mod: {newModGroup.pathToCurrentMod}, " 
                           + $"last mod: {modGroup.pathToCurrentMod}");
 
@@ -133,10 +133,10 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                             initialLoad = false;
                             ModChanged();
                         } else {
-                            Debug.LogWarning("<b>[Modding]</b> Current Mod was not changed!");
+                            LogWarning("Current Mod was not changed!");
                         }
                     } else {
-                        Debug.Log("<b>[Modding]</b> Mod is not active: Restoring Default");
+                        Log("Mod is not active: Restoring Default");
                         arenaMod = arenaOrig;
                         arenaModLoader.ModChanged = true;
                     }
@@ -149,7 +149,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         }
 
         public void WriteErrorToFile(string fileName, string errorMsg) {
-            Debug.LogError($"<b>[Modding]</b> {errorMsg}");
+            LogError($"{errorMsg}");
             
             string errorFileName =
                 $"{DefaultPathForMods}/{fileName}_error_{DateTime.Now:yyyy-MM-dd_HHmm}.txt";
@@ -174,7 +174,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                 }
                 
                 arenaModLoader.ModChanged = false;
-                Debug.Log("<b>[Modding]</b> Applying ArenaMod changes");
+                Log("Applying ArenaMod changes");
                 arenaMod.skybox.LoadTextures(moddableSkybox, mod.useCache);
                 arenaMod.ApplyTo(
                     moddableGameObjects,
@@ -244,5 +244,24 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                 ? ""
                 : DefaultPathForMods);
         }
+        
+        
+        #region Logging
+        // passing a prefix makes it easy to filter log statements of this subsystem
+        private const string LOGPREFIX = "<b>[Modding]</b>";
+    
+        // [HideInStackTrace] or [HideInConsole]
+        private void Log(string msg) {
+            Debug.Log($"{LOGPREFIX} {msg}");
+        }
+
+        private void LogWarning(string msg) {
+            Debug.LogWarning($"{LOGPREFIX} {msg}");
+        }
+        
+        private void LogError(string msg) {
+            Debug.LogError($"{LOGPREFIX} {msg}");
+        }
+        #endregion Logging        
     }
 }
