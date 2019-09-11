@@ -20,18 +20,18 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         /// <summary>
         ///     Game object mods for this arena.
         /// </summary>
-        public List<StageConfigNoteSource> moddableGameObjects = new List<StageConfigNoteSource>();
+        public List<ArenaModGameObject> moddableGameObjects = new List<ArenaModGameObject>();
         
         /// <summary>
         ///     Lighting mods for this arena.
         /// </summary>
-        public List<StageConfigLight> moddableLights = new List<StageConfigLight>();
+        public List<ArenaModLight> moddableLights = new List<ArenaModLight>();
 
-        public void ApplyTo(List<ModdableGameObject> noteSources, List<Light> lights, Material defaultSkyboxMat) {
+        public void ApplyTo(List<ModdableGameObject> gos, List<Light> lights, Material defaultSkyboxMat) {
             skybox.ApplyTo(defaultSkyboxMat);
 
-            for (int i=0; i < Mathf.Min(moddableGameObjects.Count, noteSources.Count); i++) {
-                moddableGameObjects[i].ApplyTo(noteSources[i]);
+            for (int i=0; i < Mathf.Min(moddableGameObjects.Count, gos.Count); i++) {
+                moddableGameObjects[i].ApplyTo(gos[i]);
             }
             
             for (int i=0; i < Mathf.Min(moddableLights.Count, lights.Count); i++) {
@@ -39,19 +39,19 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             }
         }
       
-        public void GetFrom(List<ModdableGameObject> noteSources, List<Light> lights) {
+        public void GetFrom(List<ModdableGameObject> gos, List<Light> lights) {
             skybox.GetFrom();
             
             moddableGameObjects.Clear();
-            foreach (ModdableGameObject noteSource in noteSources) {
-                StageConfigNoteSource noteSourceMod = new StageConfigNoteSource();
-                noteSourceMod.GetFrom(noteSource);
+            foreach (ModdableGameObject go in gos) {
+                ArenaModGameObject noteSourceMod = new ArenaModGameObject();
+                noteSourceMod.GetFrom(go);
                 moddableGameObjects.Add(noteSourceMod);
             }
             
             moddableLights.Clear();
             foreach (Light light in lights) {
-                StageConfigLight lightMod = new StageConfigLight();
+                ArenaModLight lightMod = new ArenaModLight();
                 lightMod.GetFrom(light);
                 moddableLights.Add(lightMod);
             }
@@ -59,63 +59,88 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
     }
 
     [Serializable]
-    public class StageConfigNoteSource {
+    public class ArenaModGameObject {
         public string name = "";
         public bool modThis = false;
+
+        public bool overrideActive = false;
+        
+        // this does not work for all objects because some are
+        // activated / deactivated by the game
+        public bool isActive = true;
         
         public Vector3 position = Vector3.zero;
         public Vector3 rotation = Vector3.zero;
         
-        public List<RendererConfig> moddableRenderers = new List<RendererConfig>();
+        public List<ArenaModRenderer> moddableRenderers = new List<ArenaModRenderer>();
 
-        private StageConfigNoteSource original = null;
+        public List<ArenaModGameObject> moddableChildren = new List<ArenaModGameObject>();
+        
+        private ArenaModGameObject original = null;
 
-        public void ApplyTo(ModdableGameObject noteSource) {
+        public void ApplyTo(ModdableGameObject go) {
             if (original == null) {
-                original = new StageConfigNoteSource();
-                original.GetFrom(noteSource);
+                original = new ArenaModGameObject();
+                original.GetFrom(go);
             }
 
             if (modThis) {
-                Transform t = noteSource.transform; 
+                if (overrideActive) {
+                    go.gameObject.SetActive(isActive);
+                }
+                
+                Transform t = go.transform;
                 t.localPosition = position;
                 t.localRotation = Quaternion.Euler(rotation);
 
-                for (int i=0; i < Mathf.Min(moddableRenderers.Count, noteSource.moddableRenderers.Count); i++) {
-                    moddableRenderers[i].ApplyTo(noteSource.moddableRenderers[i]);
+                for (int i=0; i < Mathf.Min(moddableRenderers.Count, go.moddableRenderers.Count); i++) {
+                    moddableRenderers[i].ApplyTo(go.moddableRenderers[i]);
+                }
+                
+                for (int i=0; i < Mathf.Min(moddableChildren.Count, go.moddableChildren.Count); i++) {
+                    moddableChildren[i].ApplyTo(go.moddableChildren[i]);
                 }
             }
         }
         
-        public void GetFrom(ModdableGameObject noteSource) {
-            name = noteSource.name;
+        public void GetFrom(ModdableGameObject go) {
+            name = go.name;
             modThis = true;
+
+            isActive = go.gameObject.activeSelf;
             
-            Transform t = noteSource.transform; 
+            Transform t = go.transform; 
             position = t.localPosition;
             rotation = t.localRotation.eulerAngles;
             
             moddableRenderers.Clear();
-            foreach (Renderer renderer in noteSource.moddableRenderers) {
-                RendererConfig rendererMod = new RendererConfig();
+            foreach (Renderer renderer in go.moddableRenderers) {
+                ArenaModRenderer rendererMod = new ArenaModRenderer();
                 rendererMod.GetFrom(renderer);
                 moddableRenderers.Add(rendererMod);
+            }
+
+            moddableChildren.Clear();
+            foreach (ModdableGameObject noteSource in go.moddableChildren) {
+                ArenaModGameObject goMod = new ArenaModGameObject();
+                goMod.GetFrom(noteSource);
+                moddableChildren.Add(goMod);
             }
         }
     }
 
     [Serializable]
-    public class RendererConfig {
+    public class ArenaModRenderer {
         public string name = "";
         public bool enabled = true;
         public string modelOverride = "";
 
-        private RendererConfig original = null;
+        private ArenaModRenderer original = null;
         private Mesh mesh = null;
 
         public void ApplyTo(Renderer renderer) {
             if (original == null) {
-                original = new RendererConfig();
+                original = new ArenaModRenderer();
                 original.GetFrom(renderer);
             }
 
@@ -136,7 +161,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
 
 
     [Serializable]
-    public class StageConfigLight {
+    public class ArenaModLight {
         public string name = "";
         public bool modThis = false;
         public bool isActive = true;
@@ -156,11 +181,11 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         public float intensityWaiting = 0.5F;
         public float intensityPlaying = 0.5F;
 
-        private StageConfigLight original = null;
+        private ArenaModLight original = null;
         
         public void ApplyTo(Light light) {
             if (original == null) {
-                original = new StageConfigLight();
+                original = new ArenaModLight();
                 original.GetFrom(light);
             }
 
