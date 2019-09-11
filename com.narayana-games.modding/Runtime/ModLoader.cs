@@ -29,15 +29,17 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             Debug.Log($"<b>[Modding-Loader]</b> Loaded '{fileName}' from '{FullFilePath}'");
             ModChanged = true;
 
-            if (fileWatcher == null) {
-                var fi = new FileInfo(FullFilePath);
-                fileWatcher =
-                    new FileSystemWatcher(fi.DirectoryName, fi.Name) {
-                        NotifyFilter = NotifyFilters.LastWrite
-                    };
-                fileWatcher.Changed += (o, args) => OnFileChanged();
-                fileWatcher.EnableRaisingEvents = true;
+            if (fileWatcher != null) {
+                fileWatcher.Dispose();
             }
+            
+            var fi = new FileInfo(FullFilePath);
+            fileWatcher =
+                new FileSystemWatcher(fi.DirectoryName, fi.Name) {
+                    NotifyFilter = NotifyFilters.LastWrite
+                };
+            fileWatcher.Changed += (o, args) => OnFileChanged();
+            fileWatcher.EnableRaisingEvents = true;
         }
 
         private void OnFileChanged() {
