@@ -177,15 +177,161 @@ work. But that's easy to explain: You may have noticed that in Retro Clubbing, t
 start playing a song. That's done by setting `dependentOnGameState` to `true` and having different values
 for `intensityWaiting` and `intensityPlaying`.
 
-### TunnelMod.json
+### PostProcessingMod.json
 
-This is a big one. I'll try to keep it short, anyways.
+Lets you change the postprocessing settings for the arena. We only use 
+[Bloom](https://github.com/Unity-Technologies/PostProcessing/wiki/Bloom) 
+and [Color Grading](https://github.com/Unity-Technologies/PostProcessing/wiki/Color-Grading).
+Also, we only expose a subset of the actual parameters. If you'd like to change a parameter that
+we haven't included, yet, [please let us know](https://discord.gg/Holodance).
+
+Here's a version of `ArenaMods/ZeroDistraction/MaximumDistraction/`
+with some parts omitted to make it a little easier to read (those values are designed to 
+increase distraction, so don't consider them an artistic recommendation):
+
+```
+{
+    "modThis": true,
+    "activateState": "",
+    "useCache": true,
+    "normal": {
+        "transitionTime": 0.3,
+        "bloom": {
+            "intensity": 4.0,
+            "threshold": 0.8,
+            "softKnee": 0.4,
+            "diffusion": 7.2
+        },
+        "colorGrading": {
+            "temperature": 0.0,
+            "tint": 0.0,
+            "exposure": 0.5,
+            "colorFilter": {
+                "r": 1.0,
+                "g": 1.0,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "hueShift": 0.0,
+            "saturation": 30.0,
+            "contrast": 0.0
+        }
+    },
+    "comboX2": {
+        "transitionTime": 0.3,
+        "bloom": { /* omitted */ },
+        "colorGrading": { /* omitted */ }
+    },
+    "comboX3": {
+        "transitionTime": 0.3,
+        /* omitted */
+    },
+    "comboX4": {
+        "transitionTime": 0.3,
+        /* omitted */
+    },
+    "comboLong": {
+        "transitionTime": 0.3,
+        /* omitted */
+    }
+}
+```
 
 `activateState` is for development and creating screenshots. Make sure to keep this
 empty when publishing. While working on your mod, put in `normal`, `comboX2`, `comboX3`, `comboX4`, or `comboLong`
 to activate these states. You may also want to use a short `transitionTime` during testing but you can make
-this several seconds for the higher combos (for *comboX2*, in particular, setting this to a high value may result
-in that state never being fully reached because the player only has to catch 8 more orbs to move on to *comboX3*).
+this several seconds for the higher combos (for `comboX2`, in particular, setting this to a high value may result
+in that state never being fully reached because the player only has to catch 8 more orbs to move on to `comboX3`).
+
+### TunnelMod.json
+
+This is a big one. As the name may make obvious, this one will only work in the Arena *Trippy Tunnels*,
+and it mods the appearance of the tunnel.
+I'll try to keep it short, anyways. Here's a version of `ArenaMods/TrippyTunnels/TextureKit/`
+with some parts omitted to make it a little easier to read:
+
+```
+{
+    "activateState": "",
+    "normal": {
+        "transitionTime": 0.2,
+        "position": {
+            "x": 0.0,
+            "y": 4.8,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "scale": {
+            "x": 10.0,
+            "y": 10.0,
+            "z": 800.0
+        },
+        "segments": 32,
+        "stretch": 0.0,
+        "layer1": {
+            "alpha": 1.0,
+            "speed": 0.2,
+            "rotation": 0.0,
+            "twist": 0.0,
+            "exposure": 0.7,
+            "texture": "TunnelTextures/Organic02_Purple.png"
+        },
+        "layer2": {
+            "alpha": 0.3,
+            "speed": -0.3,
+            "rotation": 0.16,
+            "twist": 0.13,
+            "exposure": 0.3,
+            "texture": "TunnelTextures/Fractal01.png"
+        },
+        "layer3": {
+            "alpha": 0.2,
+            "speed": -0.2,
+            "rotation": -0.6,
+            "twist": -0.5,
+            "exposure": 0.2,
+            "texture": "TunnelTextures/Fractal05.png"
+        }
+    },
+    "comboX2": {
+        "transitionTime": 1.0,
+        "position": { "x": 0.0, "y": 3.5, "z": 0.0 },
+        "rotation": { "x": 0.0, "y": 0.0, "z": 0.0
+        },
+        "scale": { "x": 12.0, "y": 8.0, "z": 800.0 },
+        "segments": 32,
+        "stretch": 0.0,
+        "layer1": {
+            "alpha": 0.8,
+            "speed": -0.5,
+            "rotation": 1.0,
+            "twist": 1.0,
+            "exposure": 0.8,
+            "texture": "TunnelTextures/AlwaysWatching.png"
+        },
+        "layer2": { /* omitted */ },
+        "layer3": { /* omitted */ }
+    },
+    "comboX3": {
+        "transitionTime": 2.0,
+         /* omitted */ 
+    },
+    "comboX4": {
+        "transitionTime": 10.0,
+         /* omitted */ 
+    },
+    "comboLong": {
+        "transitionTime": 30.0,
+         /* omitted */ 
+    }
+}
+```
+
+See section PostProcessingMod.json for how `activateState` and `transitionTime` work.
 
 Be very careful with changing `position` and `rotation`. This could be very disorienting for players if you
 do something extreme.
