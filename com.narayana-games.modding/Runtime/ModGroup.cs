@@ -27,11 +27,41 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         public string pathToCurrentMod = "";
         
         /// <summary>
-        ///     The key for the group, e.g. Arena-TrippyTunnels. All mods that
+        ///     The key for the group, e.g. ArenaMod-TrippyTunnels. All mods that
         ///     work with this item must use the exact same group key.
         /// </summary>
         [FormerlySerializedAs("compatibleModsKey")]
         public string groupKey = "";
+
+        /// <summary>
+        ///     Optional override tag category (as defined on mod.io). Usually, the
+        ///     first part of groupKey will be used.
+        /// </summary>
+        public string groupTagCategory = "";
+        public string GroupTagCategory {
+            get {
+                if (!string.IsNullOrEmpty(groupTagCategory) || groupKey.IndexOf("-") < 0) {
+                    return groupTagCategory;
+                }
+
+                return groupKey.Substring(0, groupKey.IndexOf("-"));
+            }
+        }
+        
+        /// <summary>
+        ///     Optional override tag (as defined on mod.io). Usually, the
+        ///     first part of groupKey will be used.
+        /// </summary>
+        public string groupTag = "";
+        public string GroupTag {
+            get {
+                if (!string.IsNullOrEmpty(groupTag) || groupKey.IndexOf("-") < 0) {
+                    return groupTag;
+                }
+
+                return groupKey.Substring(groupKey.IndexOf("-") + 1);
+            }
+        }
         
         /// <summary>
         ///     List of paths where mods for this group can be found.
