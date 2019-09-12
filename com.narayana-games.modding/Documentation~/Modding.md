@@ -8,7 +8,7 @@ and
 ## Getting Started
 
 Currently, Holodance only has support for modding in the Arenas
-Trippy Tunnels and Zero Distraction.
+[Trippy Tunnels](https://www.youtube.com/watch?v=dLQy7N1rClw) and *Zero Distraction*.
 
 To get started, check out:
 
@@ -45,7 +45,9 @@ see above for full path to folder `StreamingAssets\`):
 ```
 
 You'll notice that I have added a path to the local clone of this repository, for easy testing.
-You'll also notice that `pathToCurrentMod` points to a path that isn't included in `pathsForMods`.
+You'll also notice that `ArenaMods/ZeroDistraction` is a relative path. It's relative to:
+`<pathToSteam>\Steam\steamapps\common\Holodance\Holodance_Data\StreamingAssets\`.
+And you'll also notice that `pathToCurrentMod` points to a path that isn't included in `pathsForMods`.
 The reason is that the paths of mod.io (and later Steam Workshop) are fixed and can never be changed,
 and are therefore implicitly added during runtime instead of putting them into the configuration file.
 
