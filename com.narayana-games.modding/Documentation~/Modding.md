@@ -8,7 +8,7 @@ and
 ## Getting Started
 
 Currently, Holodance only has support for modding in the Arenas
-Trippy Tunnels.
+Trippy Tunnels and Zero Distraction.
 
 To get started, check out:
 
@@ -20,6 +20,37 @@ Any mods you put into that folder will immediately show up in the game
 Mods that you have downloaded from [mod.io](https://holodance.mod.io/) (inside the game), will show up in:
 
 ```C:\Users\<YourName>\AppData\LocalLow\narayana games\Holodance\modio-187\_installedMods\<someID>```
+
+You can also add additional folders for your convenience in the file `ModGroup.json`. There is one
+`ModGroup.json` for each group of mods. Currently, we only have *ArenaMods*, and each arena that
+supports modding has one `ModGroup.json`. We'll eventually also have full arenas (all full arenas
+will be one other mod group), avatars (also one mod group for all avatars), weapons (one group for
+each mechanic), orbs (one group) and maybe color schemes.
+
+Here is my `ModGroup.json` file of *ZeroDistraction* (located in `...\StreamingAssets\ArenaMods\ZeroDistraction\ModGroup,json`,
+see above for full path to folder `StreamingAssets\`):
+
+```
+{
+    "isGroupActive": true,
+    "pathToCurrentMod": "C:\\Users\\LONG_PATH\\modio-187\\_installedMods\\41752_48294",
+    "groupKey": "ArenaMod-ZeroDistraction",
+    "groupTagCategory": "",
+    "groupTag": "",
+    "pathsForMods": [
+        "ArenaMods/ZeroDistraction",
+        "C:\\GameDev\\GitHub\\Modding\\ModExamples\\Holodance\\ArenaMods\\ZeroDistraction"
+    ]
+}
+```
+
+You'll notice that I have added a path to the local clone of this repository, for easy testing.
+You'll also notice that `pathToCurrentMod` points to a path that isn't included in `pathsForMods`.
+The reason is that the paths of mod.io (and later Steam Workshop) are fixed and can never be changed,
+and are therefore implicitly added during runtime instead of putting them into the configuration file.
+
+`groupTagCategory` and `groupTag` can be empty if the `groupKey` is comprised of a 
+category (`ArenaMods`) and tag (`ZeroDistraction`), separated by minus (`-`).
 
 ## Creating your first mod
 
@@ -46,7 +77,7 @@ Here's what this looks like:
 
 ```
 {
-    "groupKey": "Arena-TrippyTunnels",
+    "groupKey": "ArenaMod-TrippyTunnels",
     "modName": "Texture Kit",
     "modVersion": "1.0.0",
     "modAuthor": "jashan",
