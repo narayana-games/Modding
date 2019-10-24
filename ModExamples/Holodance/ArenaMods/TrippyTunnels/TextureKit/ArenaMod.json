@@ -69,11 +69,11 @@
                 "b": 1.0,
                 "a": 1.0
             },
-            "intensity": 0.2,
+            "intensity": 0.8,
             "shadows": 0,
             "dependentOnGameState": false,
-            "intensityWaiting": 0.5,
-            "intensityPlaying": 0.5
+            "intensityWaiting": 0.8,
+            "intensityPlaying": 0.6
         },
         {
             "name": "Back Light (Directional)",
