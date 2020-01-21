@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace NarayanaGames.BeatTheRhythm.Modding {
 
@@ -23,11 +24,20 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         private float endIntensity;
 
         public void Awake() {
+            //Debug.Log($"{this.name}.GameStateLight.Awake() called", this);
             if (myLight == null) {
                 myLight = GetComponent<Light>();
             }
         }
 
+        // public void OnEnable() {
+        //     Debug.Log($"{this.name}.GameStateLight.OnEnable() called", this);
+        // }
+        //
+        // public void OnDisable() {
+        //     Debug.Log($"{this.name}.GameStateLight.OnDisable() called", this);
+        // }
+        
         public void StartPlaying(float fadeTime) {
             StartTransition(fadeTime, myLight.intensity, intensityPlaying);
         }
@@ -41,6 +51,11 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         }
 
         private void StartTransition(float fadeTime, float startIntensity, float endIntensity) {
+            // Debug.Log(
+            //     $"{this.name}.GameStateLight.StartTransition({fadeTime}, {startIntensity}, {endIntensity}) called,"
+            //     +" isActiveAndEnabled={isActiveAndEnabled}", this);
+            
+            
             startTime = Time.realtimeSinceStartup;
 
             this.fadeTime = fadeTime;
@@ -62,11 +77,13 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                 myLight.intensity = Mathf.Lerp(startIntensity, endIntensity, timeFrac);
 
                 if (!myLight.enabled) {
+                    //Debug.Log($"{this.name}.GameStateLight.Update(): ENABLED Light");
                     myLight.enabled = true;
                 }
             } else {
                 myLight.intensity = endIntensity;
                 if (myLight.intensity < 0.0001F) {
+                    // Debug.Log($"{this.name}.GameStateLight.Update(): DISABLED Light");
                     myLight.enabled = false;
                 }
                 this.enabled = false;

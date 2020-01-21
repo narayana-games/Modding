@@ -190,6 +190,7 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             }
 
             if (modThis) {
+                //Debug.Log($"[Modding] setting light active: {isActive}");
                 light.gameObject.SetActive(isActive);
                 light.enabled = isActive;
                 if (isActive) {
@@ -212,11 +213,12 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
                             return;
                         }
 
+                        gameStateLight.enabled = true;
                         gameStateLight.intensityWaiting = intensityWaiting;
                         gameStateLight.intensityPlaying = intensityPlaying;
                     } else {
                         if (gameStateLight != null) {
-                            gameStateLight.enabled = true;
+                            gameStateLight.enabled = false;
                         }
                     }
                 }
