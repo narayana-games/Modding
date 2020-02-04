@@ -10,7 +10,8 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
             ComboX2 = 1,
             ComboX3 = 2,
             ComboX4 = 3,
-            ComboLong = 4
+            ComboLong = 4,
+            InObstacle = 5
         }
         
         public bool modThis = true;
@@ -22,12 +23,13 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         public PostProcessingState comboX3 = new PostProcessingState();
         public PostProcessingState comboX4 = new PostProcessingState();
         public PostProcessingState comboLong = new PostProcessingState();
+        public PostProcessingState inObstacle = new PostProcessingState();
 
         private PostProcessingState[] states = null;
         public PostProcessingState[] States {
             get {
                 if (states == null) {
-                    states = new[] { normal, comboX2, comboX3, comboX4, comboLong };                    
+                    states = new[] { normal, comboX2, comboX3, comboX4, comboLong, inObstacle };                    
                 }
 
                 return states;
