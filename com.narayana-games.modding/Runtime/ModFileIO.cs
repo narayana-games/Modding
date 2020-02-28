@@ -158,7 +158,11 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
 
         #region Logging
         // passing a prefix makes it easy to filter log statements of this subsystem
+#if UNITY_EDITOR
         private const string LOGPREFIX = "<b>[Modding-FileIO]</b>";
+#else
+        private const string LOGPREFIX = "[Modding-FileIO]";
+#endif
     
         // [HideInStackTrace] or [HideInConsole]
         private static void Log(string msg) {
