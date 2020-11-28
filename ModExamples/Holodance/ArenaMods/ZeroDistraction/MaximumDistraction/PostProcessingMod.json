@@ -116,5 +116,51 @@
             "saturation": 50.0,
             "contrast": 50.0
         }
+    },
+    "inObstacle": {
+        "transitionTime": 0.03,
+        "bloom": {
+            "intensity": 14.0,
+            "threshold": 0.6,
+            "softKnee": 0.5,
+            "diffusion": 5.0
+        },
+        "colorGrading": {
+            "temperature": 0.0,
+            "tint": 0.0,
+            "exposure": 0.0,
+            "colorFilter": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "hueShift": 0.0,
+            "saturation": 50.0,
+            "contrast": 20.0
+        }
+    },
+    "lowEnergy": {
+        "transitionTime": 0.1,
+        "bloom": {
+            "intensity": 0.0,
+            "threshold": 1.0,
+            "softKnee": 0.5,
+            "diffusion": 5.0
+        },
+        "colorGrading": {
+            "temperature": 0.0,
+            "tint": 0.0,
+            "exposure": -4.0,
+            "colorFilter": {
+                "r": 0.6,
+                "g": 0.3,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "hueShift": 0.0,
+            "saturation": 0.0,
+            "contrast": 20.0
+        }
     }
 }
