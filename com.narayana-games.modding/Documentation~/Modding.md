@@ -5,6 +5,15 @@ This guide applies to the VR rhythm games
 and 
 [Beat the Rhythm](https://store.steampowered.com/app/781200/Beat_the_Rhythm_VR/)
 
+## Important Updates
+
+This section lists important changes in the modding format during the last year.
+For older changes, see the history of this file.
+
+| Date       | Change      |
+| ---------- |-------------|
+| 2020-11-28 | Please review PostProcessingMod.json |
+
 ## Getting Started
 
 Currently, Holodance only has support for modding in the Arenas
@@ -238,10 +247,70 @@ increase distraction, so don't consider them an artistic recommendation):
 ```
 
 `activateState` is for development and creating screenshots. Make sure to keep this
-empty when publishing. While working on your mod, put in `normal`, `comboX2`, `comboX3`, `comboX4`, or `comboLong`
-to activate these states. You may also want to use a short `transitionTime` during testing but you can make
+empty when publishing. While working on your mod, put in `normal`, `comboX2`, `comboX3`, `comboX4`, `comboLong`,
+`inObstacle` or `lowEnergy` to activate these states. 
+You may also want to use a short `transitionTime` during testing but you can make
 this several seconds for the higher combos (for `comboX2`, in particular, setting this to a high value may result
 in that state never being fully reached because the player only has to catch 8 more orbs to move on to `comboX3`).
+
+**Change 2020-11-28:** We now have walls, which have their own state, `inObstacle`, and a player energy level 
+that decreases when events are missed, and increases when events are caught. This only applies when **No Fail**
+is deactivated in *Settings* -> *Style / Mechanics* -> *Finetune Gameplay*. **Sudden Death** in that same area
+switches the energy level to zero on the first miss. For the energy levels, a new pseudo-state has been
+introduced: `lowEnergy`. Regardless of the current state (which will switch to normal when the first event is 
+missed), post processing is lerped towards `lowEnergy` the lower the energy gets. If `lowEnergy` has not been
+set up, `inObstacle` is used instead. Feel free to simply use the default settings which gives players a
+consistent experience:
+
+```
+    "inObstacle": {
+        "transitionTime": 0.03,
+        "bloom": {
+            "intensity": 14.0,
+            "threshold": 0.6,
+            "softKnee": 0.5,
+            "diffusion": 5.0
+        },
+        "colorGrading": {
+            "temperature": 0.0,
+            "tint": 0.0,
+            "exposure": 0.0,
+            "colorFilter": {
+                "r": 1.0,
+                "g": 0.0,
+                "b": 0.0,
+                "a": 1.0
+            },
+            "hueShift": 0.0,
+            "saturation": 50.0,
+            "contrast": 20.0
+        }
+    },
+    "lowEnergy": {
+        "transitionTime": 0.1,
+        "bloom": {
+            "intensity": 0.0,
+            "threshold": 1.0,
+            "softKnee": 0.5,
+            "diffusion": 5.0
+        },
+        "colorGrading": {
+            "temperature": 0.0,
+            "tint": 0.0,
+            "exposure": -4.0,
+            "colorFilter": {
+                "r": 0.6,
+                "g": 0.3,
+                "b": 1.0,
+                "a": 1.0
+            },
+            "hueShift": 0.0,
+            "saturation": 0.0,
+            "contrast": 20.0
+        }
+    }
+
+```
 
 ### TunnelMod.json
 
