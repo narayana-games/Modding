@@ -1,7 +1,6 @@
 {
     "modThis": true,
     "activateState": "",
-    "useCache": true,
     "normal": {
         "transitionTime": 0.3,
         "bloom": {

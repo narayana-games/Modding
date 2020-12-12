@@ -18,7 +18,6 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         public bool modThis = true;
         
         public string activateState = "";
-        public bool useCache = true;
         public PostProcessingState normal = new PostProcessingState();
         public PostProcessingState comboX2 = new PostProcessingState();
         public PostProcessingState comboX3 = new PostProcessingState();

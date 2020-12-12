@@ -14,7 +14,6 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         }
         
         public string activateState = "";
-        public bool useCache = true;
         public TunnelState normal = new TunnelState();
         public TunnelState comboX2 = new TunnelState();
         public TunnelState comboX3 = new TunnelState();
@@ -33,15 +32,17 @@ namespace NarayanaGames.BeatTheRhythm.Modding {
         }
         
         public void LoadTextures() {
-            ModGroup activeMod = ArenaModController.Instance.modGroup;
+            ModGroup activeModGroup = ArenaModController.Instance.modGroup;
+            Mod activeMod = ArenaModController.Instance.mod;
+            
             foreach (TunnelState state in States) {
                 foreach (TunnelLayer layer in state.Layers) {
                     if (!string.IsNullOrEmpty(layer.texture)) {
                         layer.Texture =
                             ModFileIO.LoadTexture(
-                                activeMod.FullBasePath,
+                                activeModGroup.FullBasePath,
                                 layer.texture, 
-                                useCache);
+                                activeMod.useCache);
                     }
                 }
             }
