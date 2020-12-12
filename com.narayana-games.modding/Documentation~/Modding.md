@@ -12,7 +12,7 @@ For older changes, see the history of this file.
 
 | Date       | Change      |
 | ---------- |-------------|
-| 2020-11-28 | Please review PostProcessingMod.json |
+| 2020-11-28 | Added inObstacle and lowEnergy. Please review PostProcessingMod.json |
 
 ## Getting Started
 
